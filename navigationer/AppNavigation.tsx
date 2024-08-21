@@ -8,6 +8,7 @@ import DynamicPage from "../page/home/DynamicPage";
 import MinePage from "../page/home/MinePage";
 import SFCarHomePage from "../page/sfcar/SFCarHomePage";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import SFCInvitePsgPage from "../page/sfcar/SFCInvitePsgPage";
 
 const AppNavigator = createNativeStackNavigator()
 
@@ -58,6 +59,10 @@ function MyStackNavigator() {
                 name="SFCarHomePage"
                 component={SFCarHomePage}
                 options={{ headerShown: false }}
+            />
+            <AppNavigator.Screen
+                name="SFCInvitePsgPage"
+                component={SFCInvitePsgPage}
             />
         </AppNavigator.Navigator>
     );

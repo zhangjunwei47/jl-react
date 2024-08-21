@@ -7,7 +7,7 @@ export default class SFCHomePsg extends React.Component {
     const { navigation } = this.props
     return (
       <View>
-        <Button title="发单" onPress={() => navigation.navigate("MinePage")} />
+        <Button title="发单" onPress={() => navigation.navigate("SFCInvitePsgPage")} />
       </View>
     )
   }
