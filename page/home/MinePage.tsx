@@ -7,8 +7,7 @@ export default class MinePage extends React.Component {
         const { navigation } = this.props
         return (
             <View>
-                <Text> 这是第三个页面</Text>
-                <Button title="goBack " onPress={() => navigation.goBack()} />
+                <Text>我的页面</Text>
             </View>
         )
     }
