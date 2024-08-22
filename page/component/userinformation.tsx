@@ -48,7 +48,7 @@ export const ActionInfoLayout: React.FC<ActionInfo> = ({ icon, message, messageF
             style.actionLayout,
             backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderColor: '#000', borderWidth: 2 }
         ]}>
-            {icon && <Image style={style.imageContainer} source={{ uri: icon }}></Image>}
+            {icon && <Image style={style.image} source={{ uri: icon }}></Image>}
             {message && <Text style={[style.textContainer, { fontSize: messageFontSize }]}>{message}</Text>}
         </View>
     );
