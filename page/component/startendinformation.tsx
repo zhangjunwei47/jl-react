@@ -62,13 +62,13 @@ const ThreeRowLayout: React.FC<StartEndInfoModel> = ({ infos }) => {
             />
             <View
                 style={[styles.circle,
-                    {
-                        width: 2,
-                        height: 10,
-                        backgroundColor: 'red',
-                        borderRadius: 1
-                    },
-                    ]} />
+                {
+                    width: 2,
+                    height: 10,
+                    backgroundColor: 'red',
+                    borderRadius: 1
+                },
+                ]} />
             < InfoShowRow
                 circleSize={row2.circleSize}
                 circleColor={row2.circleColor}
@@ -81,19 +81,19 @@ const ThreeRowLayout: React.FC<StartEndInfoModel> = ({ infos }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'column', 
+        flexDirection: 'column',
         padding: 10,
     },
     row: {
-        flexDirection: 'row',    
-        alignItems: 'center',    
-        marginBottom: 15,       
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 15,
     },
     circle: {
-        marginRight: 10,    
+        marginRight: 10,
     },
     text: {
-        fontSize: 16,  
+        fontSize: 16,
     },
 });
 
