@@ -22,7 +22,9 @@ interface UserInfo {
 
 interface ActionInfo {
     icon?: string,
-    content?: string
+    message?: string,
+    messageFontSize?: number,
+    backgroundColor?: string
 }
 
 const UserInfoLayout: React.FC<UserInfo> = ({ icon, title, titleSize = 20, subTitle, subTitleSize = 10 }) => {
@@ -39,6 +41,19 @@ const UserInfoLayout: React.FC<UserInfo> = ({ icon, title, titleSize = 20, subTi
         </View>
     );
 }
+
+export const ActionInfoLayout: React.FC<ActionInfo> = ({ icon, message, messageFontSize = 20, backgroundColor }) => {
+    return (
+        <View style={[
+            style.actionLayout,
+            backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderColor: '#000', borderWidth: 2 }
+        ]}>
+            {icon && <Image style={style.imageContainer} source={{ uri: icon }}></Image>}
+            {message && <Text style={[style.textContainer, { fontSize: messageFontSize }]}>{message}</Text>}
+        </View>
+    );
+}
+
 
 const style = StyleSheet.create({
     container: {
@@ -63,10 +78,17 @@ const style = StyleSheet.create({
     },
     text: {
         padding: 1
+    },
+    actionLayout: {
+        flexDirection: 'row',   // 布局方式
+        alignItems: 'center',   // 居中对齐
+        padding: 10,            // 内边距
+        borderRadius: 10,       // 圆角
+        borderWidth: 2,         // 默认边框宽度 (只有在没有设置 backgroundColor 时生效)
+        borderColor: 'transparent', // 默认边框颜色为透明
+        alignSelf: 'flex-start',
     }
 });
 
 export default UserInfoLayout;
-
-
 
