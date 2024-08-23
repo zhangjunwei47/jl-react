@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 interface ActionInfo {
     icon?: string,
@@ -8,16 +8,18 @@ interface ActionInfo {
     backgroundColor?: string,
 }
 
-export const ActionInfoLayout: React.FC<ActionInfo & { style?: object }> = ({ icon, message, messageFontSize = 20, backgroundColor, style: customStyle }) => {
+export const ActionInfoLayout: React.FC<ActionInfo & { style?: object, onPress?: () => void }> = ({ icon, message, messageFontSize = 20, backgroundColor, style: customStyle, onPress }) => {
     return (
-        <View style={[
-            style.container,
-            backgroundColor ? { backgroundColor, borderWidth: 0 } : { padding: 8, borderColor: '#000', borderWidth: 1 },
-            customStyle
-        ]}>
+        <TouchableOpacity
+            onPress={onPress}
+            style={[
+                style.container,
+                backgroundColor ? { backgroundColor, borderWidth: 0 } : { padding: 8, borderColor: '#000', borderWidth: 1 },
+                customStyle
+            ]}>
             {icon && <Image style={style.image} source={{ uri: icon }}></Image>}
             {message && <Text style={[style.text, { fontSize: messageFontSize }]}>{message}</Text>}
-        </View>
+        </TouchableOpacity>
     );
 }
 
@@ -25,10 +27,10 @@ const style = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent:"flex-start",
+        justifyContent: "flex-start",
         borderRadius: 10,
-        paddingLeft:10,
-        paddingRight:10,
+        paddingLeft: 10,
+        paddingRight: 10,
         borderWidth: 2,
         borderColor: 'transparent'
     },

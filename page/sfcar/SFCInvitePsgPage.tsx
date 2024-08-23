@@ -38,6 +38,7 @@ export default class SFCInvitePsgPage extends React.Component {
       backgroundColor: "#75E67B",
       titleFontSize: 20
     }
+    
     const degreeInfo = {
       degree: "95% 顺路度",
       time: "今天 10:00",

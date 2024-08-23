@@ -33,15 +33,15 @@ const SFCButton: React.FC<SFCButtonModel & { style?: object, onPress?: () => voi
     onPress
 }) => {
     return (
-        <TouchableOpacity 
-        onPress={onPress}
-        style={
-            [
-                styles.container,
-                backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderWidth: 2, borderColor: '#fff' },
-                customStyle
-            ]
-        }>
+        <TouchableOpacity
+            onPress={onPress}
+            style={
+                [
+                    styles.container,
+                    backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderWidth: 2, borderColor: '#fff' },
+                    customStyle
+                ]
+            }>
             {icon && <Image style={styles.image} source={{ uri: icon }}></Image>}
             <View style={styles.titleContainer}>
                 {title && <Text style={[styles.text, { fontSize: titleFontSize }]}>{title}</Text>}
