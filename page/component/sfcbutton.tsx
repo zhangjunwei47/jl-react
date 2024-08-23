@@ -11,7 +11,7 @@
  */
 import { text } from "@fortawesome/fontawesome-svg-core";
 import React from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 interface SFCButtonModel {
     icon?: string
@@ -23,38 +23,43 @@ interface SFCButtonModel {
 }
 
 
-const SFCButton: React.FC<SFCButtonModel> = ({ icon,
+const SFCButton: React.FC<SFCButtonModel & { style?: object, onPress?: () => void }> = ({ icon,
     title,
     subTitle,
     backgroundColor,
     titleFontSize = 10,
-    subTitleFontSize= 10 }) => {
+    subTitleFontSize = 10,
+    style: customStyle,
+    onPress
+}) => {
     return (
-        <View style={
+        <TouchableOpacity 
+        onPress={onPress}
+        style={
             [
                 styles.container,
-                backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderWidth: 2, borderColor: '#fff' }
+                backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderWidth: 2, borderColor: '#fff' },
+                customStyle
             ]
         }>
             {icon && <Image style={styles.image} source={{ uri: icon }}></Image>}
             <View style={styles.titleContainer}>
-                {title && <Text style={{fontSize: titleFontSize }}>{title}</Text>}
+                {title && <Text style={[styles.text, { fontSize: titleFontSize }]}>{title}</Text>}
                 {subTitle && <Text style={{ fontSize: subTitleFontSize }}>{subTitle}</Text>}
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create(
     {
         container: {
-            flexDirection: 'row',   // 布局方式
-            alignItems: 'center',   // 居中对齐
-            padding: 10,            // 内边距
-            borderRadius: 10,       // 圆角
-            borderWidth: 2,         // 默认边框宽度 (只有在没有设置 backgroundColor 时生效)
-            borderColor: 'transparent', // 默认边框颜色为透明
-            justifyContent:'center'
+            flexDirection: 'row',
+            alignItems: 'center',
+            borderRadius: 10,
+            borderWidth: 2,
+            borderColor: 'transparent',
+            justifyContent: 'center'
         },
         titleContainer: {
             flexDirection: 'column',
@@ -65,7 +70,8 @@ const styles = StyleSheet.create(
             height: 10
         },
         text: {
-            fontSize:10
+            fontSize: 10,
+            fontWeight: 900
         }
     }
 );
