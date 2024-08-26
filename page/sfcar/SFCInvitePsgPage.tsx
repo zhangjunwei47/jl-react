@@ -35,10 +35,12 @@ export default class SFCInvitePsgPage extends React.Component {
 
     const button = {
       title: "出发接乘客",
+      subTitle: "出发出发啊哈哈哈哈",
       backgroundColor: "#75E67B",
-      titleFontSize: 20
+      titleFontSize: 20,
+      subTitleFontSize: 8,
     }
-    
+
     const degreeInfo = {
       degree: "95% 顺路度",
       time: "今天 10:00",

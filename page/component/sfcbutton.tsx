@@ -1,17 +1,15 @@
 /**
  *  button 样式
  * 
- * 
  * 主背景
  * 左侧icon
  * 主标题
  * 副标题
  * 
- * 
  */
 import { text } from "@fortawesome/fontawesome-svg-core";
 import React from "react";
-import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, Image, StyleSheet, TouchableOpacity, StyleProp, ViewStyle } from "react-native";
 
 interface SFCButtonModel {
     icon?: string
@@ -20,15 +18,16 @@ interface SFCButtonModel {
     backgroundColor?: string
     titleFontSize?: number
     subTitleFontSize?: number
+    iconSize?: number
 }
 
-
-const SFCButton: React.FC<SFCButtonModel & { style?: object, onPress?: () => void }> = ({ icon,
+const SFCButton: React.FC<SFCButtonModel & { style?: StyleProp<ViewStyle>, onPress?: () => void }> = ({ icon,
     title,
     subTitle,
     backgroundColor,
     titleFontSize = 10,
     subTitleFontSize = 10,
+    iconSize = 10,
     style: customStyle,
     onPress
 }) => {
@@ -41,16 +40,23 @@ const SFCButton: React.FC<SFCButtonModel & { style?: object, onPress?: () => voi
                     backgroundColor ? { backgroundColor, borderWidth: 0 } : { borderWidth: 2, borderColor: '#fff' },
                     customStyle
                 ]
-            }>
-            {icon && <Image style={styles.image} source={{ uri: icon }}></Image>}
+            }
+            activeOpacity={0.7}
+        >
+            {icon ? <Image style={[styles.image, { width: iconSize, height: iconSize }]} source={{ uri: icon }}></Image> : null}
             <View style={styles.titleContainer}>
-                {title && <Text style={[styles.text, { fontSize: titleFontSize }]}>{title}</Text>}
-                {subTitle && <Text style={{ fontSize: subTitleFontSize }}>{subTitle}</Text>}
+                {title ? <Text style={[styles.titleText, { fontSize: titleFontSize }]}>{title}</Text> : null}
+                {subTitle ? <Text style={[styles.subTitleText, { fontSize: subTitleFontSize }]}>{subTitle}</Text> : null}
             </View>
         </TouchableOpacity>
     );
 }
 
+SFCButton.defaultProps = {
+    titleFontSize: 10,
+    subTitleFontSize: 10,
+    iconSize: 10,
+}
 const styles = StyleSheet.create(
     {
         container: {
@@ -69,9 +75,12 @@ const styles = StyleSheet.create(
             width: 10,
             height: 10
         },
-        text: {
+        titleText: {
             fontSize: 10,
             fontWeight: 900
+        },
+        subTitleText: {
+            fontSize: 8
         }
     }
 );

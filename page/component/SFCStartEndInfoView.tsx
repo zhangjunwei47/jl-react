@@ -14,11 +14,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 interface RowProps {
-    circleSize?: number;   
-    circleColor?: string;  
-    text?: string;          
-    textSize?: number;      
-    textColor?: string;    
+    circleSize?: number;
+    circleColor?: string;
+    text?: string;
+    textSize?: number;
+    textColor?: string;
 }
 
 /**
@@ -47,7 +47,7 @@ const InfoShowRow: React.FC<RowProps> = ({ circleSize = 50, circleColor = 'blue'
     );
 };
 
-const ThreeRowLayout: React.FC<StartEndInfoModel & {style?:object}> = ({ infos, style: customStyle }) => {
+const ThreeRowLayout: React.FC<StartEndInfoModel & { style?: object }> = ({ infos, style: customStyle }) => {
     console.log(infos)
     const row = infos[0]
     const row2 = infos[1]
@@ -67,9 +67,9 @@ const ThreeRowLayout: React.FC<StartEndInfoModel & {style?:object}> = ({ infos, 
                     height: 10,
                     backgroundColor: 'red',
                     borderRadius: 1,
-                    marginLeft:3
+                    marginLeft: 3
                 },
-                ]} /> 
+                ]} />
             < InfoShowRow
                 circleSize={row2.circleSize}
                 circleColor={row2.circleColor}

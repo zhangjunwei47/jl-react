@@ -20,7 +20,7 @@ interface UserInfo {
     subTitleSize?: number,
 }
 
-const UserInfoLayout: React.FC<UserInfo> = ({ icon, title, titleSize = 16, subTitle, subTitleSize = 10  }) => {
+const UserInfoLayout: React.FC<UserInfo> = ({ icon, title, titleSize = 16, subTitle, subTitleSize = 10 }) => {
     return (
         <View style={style.container}>
             <View style={style.imageContainer} >
@@ -32,7 +32,7 @@ const UserInfoLayout: React.FC<UserInfo> = ({ icon, title, titleSize = 16, subTi
                 {subTitle && <Text style={[style.text, { fontSize: subTitleSize }]}>{subTitle}</Text>}
             </View>
         </View>
-);
+    );
 }
 
 const style = StyleSheet.create({
@@ -60,12 +60,12 @@ const style = StyleSheet.create({
         padding: 1
     },
     actionLayout: {
-        flexDirection: 'row',   
-        alignItems: 'center',  
-        padding: 10,           
-        borderRadius: 10,     
-        borderWidth: 2,         
-        borderColor: 'transparent', 
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: 'transparent',
         alignSelf: 'flex-start',
     },
     actionImage: {
