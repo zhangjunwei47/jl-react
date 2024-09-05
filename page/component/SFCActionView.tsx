@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity, StyleProp, ViewStyle } from "react-native";
 
 interface ActionInfo {
     icon?: string,
@@ -8,7 +8,7 @@ interface ActionInfo {
     backgroundColor?: string,
 }
 
-export const ActionInfoLayout: React.FC<ActionInfo & { style?: object, onPress?: () => void }> = ({ icon, message, messageFontSize = 20, backgroundColor, style: customStyle, onPress }) => {
+export const ActionInfoLayout: React.FC<ActionInfo & { style?: StyleProp<ViewStyle>, onPress?: () => void }> = ({ icon, message, messageFontSize = 20, backgroundColor, style: customStyle, onPress }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -17,11 +17,14 @@ export const ActionInfoLayout: React.FC<ActionInfo & { style?: object, onPress?:
                 backgroundColor ? { backgroundColor, borderWidth: 0 } : { padding: 8, borderColor: '#000', borderWidth: 1 },
                 customStyle
             ]}>
-            {icon && <Image style={style.image} source={{ uri: icon }}></Image>}
-            {message && <Text style={[style.text, { fontSize: messageFontSize }]}>{message}</Text>}
+
+            {icon ? <Image style={style.image} source={{ uri: icon }}></Image> : null}
+            {message ? <Text style={[style.text, { fontSize: messageFontSize }]}>{message}</Text> : null}
         </TouchableOpacity>
     );
 }
+
+
 
 const style = StyleSheet.create({
     container: {

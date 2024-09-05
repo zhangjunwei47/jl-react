@@ -52,11 +52,6 @@ const SFCButton: React.FC<SFCButtonModel & { style?: StyleProp<ViewStyle>, onPre
     );
 }
 
-SFCButton.defaultProps = {
-    titleFontSize: 10,
-    subTitleFontSize: 10,
-    iconSize: 10,
-}
 const styles = StyleSheet.create(
     {
         container: {
@@ -77,7 +72,8 @@ const styles = StyleSheet.create(
         },
         titleText: {
             fontSize: 10,
-            fontWeight: 900
+            fontWeight: 900,
+            flexShrink: 1
         },
         subTitleText: {
             fontSize: 8
